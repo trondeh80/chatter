@@ -1,0 +1,10 @@
+// window.jQuery = require('jquery') ;
+require('angular') ;
+require('angular-sanitize') ;
+require('angular-aria') ;
+require('angular-cookies') ;
+require('angular-resource') ;
+require('underscore') ;
+require('bootstrap/dist/css/bootstrap.css') ;
+require('angular-ui-router') ;
+require('angular-ui-bootstrap');
