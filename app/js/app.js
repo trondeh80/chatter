@@ -17,13 +17,13 @@
             .state('app', {
                 abstract: true,
                 controller: 'Root',
-                template: '<ui-view/>'
+                template: '<ui-view class="main"/>'
             })
 
             // Start Page state...
             .state('app.start', {
                 url: '/',
-                template: '<chat-page />'
+                template: '<chat-page class="main-inner"/>'
             });
 
         $urlRouterProvider

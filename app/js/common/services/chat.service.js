@@ -6,6 +6,7 @@
     angular.module('chatter').service('chatService', chatService);
 
     function chatService($http) {
+        var api = 'http://chat.holk.no' ;
         return {
             getMessagesByRoom: getMessageByRoom,
             sendMessage: sendMessage
@@ -19,7 +20,9 @@
         }
 
         function sendMessage(message) {
-
+            return $http.post(api+'/chat.php?mod=chat&action=send',{
+                message:message
+            });
         }
     }
 

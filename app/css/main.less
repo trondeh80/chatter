@@ -1,13 +1,64 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  height: 100%;
+  min-height: 100%;
 }
 
-#chatterWindow{
-  height:600px;
-  .chatterWindowInner {
-    min-height: 600px;
-    overflow-y:scroll;
+.main-outer, .main-inner, .main {
+  height: 100%;
+}
+
+.chatwrap {
+  height: 100%;
+
+  .toprow {
+    background-color: #122b40;
+    color: #fff;
+    height: 50px;
   }
+
+  .mainarea {
+    position: absolute;
+    height: auto;
+    top: 50px;
+    width: 100%;
+    bottom: 0px;
+    display: inline-block;
+
+    .leftside {
+      padding: 10px;
+      width: 200px;
+      height: 100%;
+      display: inline-block;
+      float: left;
+    }
+
+    .chatside {
+      padding: 10px;
+      display: inline-block;
+      left: 200px;
+      right: 0px;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+
+      .chatterWindow {
+        height: 100%;
+        .chatterWindowInner {
+          height: 100%;
+          margin-bottom: -100px;
+          overflow-y: scroll;
+        }
+        .chatterWindowInput {
+          position: fixed;
+          display: block;
+          height: 100px;
+          width: 100%;
+        }
+      }
+    }
+  }
+
 }
 

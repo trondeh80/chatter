@@ -1,29 +1,24 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-2">
+<div class="chatwrap">
+    <div class="toprow menubar">
+
+    </div>
+    <div class="mainarea">
+        <div class="leftside">
             <h3>Rom:</h3>
             <ul>
                 <li><a>Standard</a></li>
             </ul>
         </div>
-        <div class="col-sm-10">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1>Standard</h1>
+        <div class="chatside">
+            <div class="chatterWindow">
+                <div class="chatterWindowInner">
+                    <chat-message message="msg" ng-repeat="msg in chatter.messages"></chat-message>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="chatterWindow">
-                        <div class="chatterWindowInner">
-                            <chat-message message="msg" ng-repeat="msg in chatter.messages"></chat-message>
-                        </div>
-                        <div class="chatterWindowInput">
-                            <input type="text" class="form-control" name="chatinput" />
-                        </div>
-                    </div>
+                <div class="chatterWindowInput">
+                    <input type="text" class="form-control" name="chatinput" />
                 </div>
             </div>
         </div>
     </div>
+
 </div>
