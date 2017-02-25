@@ -8,4 +8,5 @@ The project relies on a backend supporting websockets.
 To run:
 
  npm install
+ 
  npm start
