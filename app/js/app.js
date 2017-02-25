@@ -13,6 +13,14 @@
         // our routing setup:
         $stateProvider
 
+            // Login controller
+            .state('login', {
+                url: '/login',
+                template: require ('./components/user/login.html'),
+                controller: 'LoginController',
+                controllerAs: 'login'
+            })
+
             // Initial abstract route that runs the root controller
             .state('app', {
                 abstract: true,

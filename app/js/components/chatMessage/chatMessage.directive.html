@@ -1,3 +1,8 @@
-<div class="message">
-    {{msg.message.text}}
+<div class="message" ng-class="{'my-message': msg.isOwn()}">
+    <div class="user">
+        {{msg.getUserName()}}
+    </div>
+    <div class="text">
+        {{msg.message.text}}
+    </div>
 </div>

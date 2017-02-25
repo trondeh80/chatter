@@ -4,18 +4,30 @@
     </div>
     <div class="mainarea">
         <div class="leftside">
-            <h3>Rom:</h3>
+            <h3>Rom</h3>
+           <ul>
+               <li ng-repeat="room in chatter.rooms">
+                   <a href ng-click="setRoom(room)">{{room.name}}</a>
+               </li>
+           </ul>
+
+            <h3>Brukere</h3>
             <ul>
-                <li><a>Standard</a></li>
+                <li ng-repeat="user in chatter.users">
+                    <a href ng-click="setUser(user)" ng-class="{'is-online' : user.isOnline}">{{user.name}}</a>
+                </li>
             </ul>
+
         </div>
         <div class="chatside">
             <div class="chatterWindow">
-                <div class="chatterWindowInner">
+                <div class="chatterWindowInner" chat-height>
                     <chat-message message="msg" ng-repeat="msg in chatter.messages"></chat-message>
                 </div>
-                <div class="chatterWindowInput">
-                    <input type="text" class="form-control" name="chatinput" />
+                <div class="chatterWindowInput" input-height>
+                    <form ng-submit="chatter.send()">
+                        <input type="text" class="form-control" placeholder="din melding..." ng-model="chatter.message" name="chatinput" />
+                    </form>
                 </div>
             </div>
         </div>

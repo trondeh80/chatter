@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-md-4 col-md-offset-4">
+
+      <form name="loginForm" ng-controller="LoginController as login">
+        <h3 class="text-center">Logg inn:</h3>
+
+        <hr />
+
+        <div class="form-group">
+          <label>Epost</label>
+          <input placeholder="Anvendernamn" type="text" ng-model="login.user" class="form-control" />
+        </div>
+
+
+        <div class="form-group">
+          <label>Passord</label>
+          <input type="password" plceholder="Ditt lösenord" ng-model="login.pw" class="form-control" />
+        </div>
+
+        <div class="form-group">
+
+          <button class="btn btn-block btn-success" ng-click="login.login()">Logg in</button>
+
+        </div>
+
+        <div ng-if="login.failedLogin">
+          <hr />
+          <div class="alert alert-danger">
+            Galt brukernavn eller passord
+          </div>
+        </div>
+
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+</div>

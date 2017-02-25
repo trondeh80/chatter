@@ -1,6 +1,6 @@
 html, body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
   min-height: 100%;
 }
@@ -23,37 +23,39 @@ html, body {
     height: auto;
     top: 50px;
     width: 100%;
-    bottom: 0px;
-    display: inline-block;
+    bottom: 0;
+
+    display: -webkit-flex;
+    display: flex;
 
     .leftside {
       padding: 10px;
       width: 200px;
       height: 100%;
-      display: inline-block;
-      float: left;
+      background-color: #eaeaea;
+
+      .menu {
+        overflow-y: scroll;
+      }
+
     }
 
     .chatside {
-      padding: 10px;
-      display: inline-block;
-      left: 200px;
-      right: 0px;
-      position: absolute;
-      top: 0px;
-      bottom: 0px;
+      -webkit-flex: 1;
+      flex: 1;
 
       .chatterWindow {
         height: 100%;
+
         .chatterWindowInner {
-          height: 100%;
-          margin-bottom: -100px;
+          height: 800px;
+          padding: 10px;
           overflow-y: scroll;
         }
+
         .chatterWindowInput {
-          position: fixed;
-          display: block;
           height: 100px;
+          padding: 10px;
           width: 100%;
         }
       }

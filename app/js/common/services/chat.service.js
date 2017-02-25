@@ -1,28 +1,68 @@
-/**
- * Created by teh on 04.07.2016.
- */
 (function () {
     'use strict';
     angular.module('chatter').service('chatService', chatService);
 
-    function chatService($http) {
-        var api = 'http://chat.holk.no' ;
-        return {
-            getMessagesByRoom: getMessageByRoom,
-            sendMessage: sendMessage
-        } ;
+    function chatService($http, $rootScope, chatEventFactory, WEBSOCKET, UserService) {
 
-        function getMessageByRoom(roomId){
-            return [
-                {id:1,userId:1,text:'Hi there',timestamp: new Date().getTime()*1000},
-                {id:2,userId:1,text:'Hi there you',timestamp: new Date().getTime()*1000+2000}
-            ] ;
+        var socket = null;
+        var users = [], messages = [];
+        var chatEvents;
+
+        var service = {
+            getMessagesByRoom: getMessageByRoom,
+            sendMessage: sendMessage,
+            getRooms: getRooms
+        };
+
+        activate();
+
+        return service;
+
+        function activate() {
+            chatEvents = chatEventFactory.create(service);
+            getSocket();
+        }
+
+        function getMessageByRoom(roomId) {
+            return messages;
         }
 
         function sendMessage(message) {
-            return $http.post(api+'/chat.php?mod=chat&action=send',{
-                message:message
-            });
+            var messagePacket = {
+                action: 'messageReceived',
+                data: message
+            };
+            send(messagePacket);
+        }
+
+        function send(packet) {
+            getSocket().send(JSON.stringify(packet));
+        }
+
+        function getRooms() {
+            return [{id: 1, name: 'Standard'}];
+        }
+
+        function getSocket() {
+            if (!socket || socket.readyState > 1) {
+                socket = new WebSocket(WEBSOCKET);
+                socket.onopen = onConnection;
+                socket.onmessage = onMessage;
+            }
+            return socket;
+        }
+
+        function onConnection() {
+            var userEvent = {
+                action: 'userConnected',
+                data: UserService.getUser()
+            };
+            send(userEvent);
+        }
+
+        function onMessage(e) {
+            var msg = JSON.parse(e.data);
+            chatEvents[msg.action].call(chatEvents, msg.data);
         }
     }
 
